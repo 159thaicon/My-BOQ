@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>แอปทำ BOQ ง่ายๆ</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js"></script>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>แอปพลิเคชันทำ BOQ</h1>
+
+        <div class="input-form">
+            <div class="form-group full-width">
+                <label for="item-category">เลือกหมวดหมู่งาน:</label>
+                <select id="item-category">
+                    <option value="งานโครงสร้าง">งานโครงสร้าง</option>
+                    <option value="งานสถาปัตยกรรม">งานสถาปัตยกรรม</option>
+                    <option value="งานระบบไฟฟ้า">งานระบบไฟฟ้า</option>
+                    <option value="งานระบบประปา-สุขาภิบาล">งานระบบประปา-สุขาภิบาล</option>
+                    <option value="อื่นๆ">อื่นๆ</option>
+                </select>
+                <input type="text" id="custom-category" placeholder="หรือเพิ่มหมวดหมู่ใหม่...">
+            </div>
+            
+            <input type="text" id="item-description" placeholder="ชื่องาน/รายการ" class="full-width">
+            
+            <div class="calculation-mode">
+                <label for="calc-type">รูปแบบการคำนวณ:</label>
+                <select id="calc-type">
+                    <option value="manual">กรอกปริมาณเอง</option>
+                    <option value="area">พื้นที่ (กว้าง x ยาว)</option>
+                    <option value="volume">ปริมาตร (กว้าง x ยาว x สูง)</option>
+                </select>
+            </div>
+
+            <div id="calc-inputs">
+                </div>
+
+            <input type="text" id="item-unit" placeholder="หน่วย">
+            <input type="number" id="item-price" placeholder="ราคาต่อหน่วย">
+            <button id="add-item-btn" class="full-width">เพิ่มรายการ</button>
+        </div>
+
+        <table id="boq-table">
+            <thead>
+                <tr>
+                    <th>ลำดับ</th>
+                    <th>รายการ / หมวดหมู่</th>
+                    <th>ปริมาณ</th>
+                    <th>หน่วย</th>
+                    <th>ราคา/หน่วย (บาท)</th>
+                    <th>ราคารวม (บาท)</th>
+                    <th>แก้ไข</th>
+                    <th>จัดการ</th>
+                </tr>
+            </thead>
+            <tbody>
+                </tbody>
+        </table>
+
+        <div class="summary">
+            <h2>ยอดรวมสุทธิ: <span id="grand-total">0.00</span> บาท</h2>
+            <button id="export-btn">Export to CSV</button>
+            <button id="print-btn">Print BOQ</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
